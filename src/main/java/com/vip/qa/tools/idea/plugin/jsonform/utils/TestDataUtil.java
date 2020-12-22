@@ -1,4 +1,4 @@
-package com.vip.qa.tools.idea.plugin.jsonform.service;
+package com.vip.qa.tools.idea.plugin.jsonform.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.util.List;
 
-public class TestDataService {
+public class TestDataUtil {
 
 	public static DefaultTableModel convertDataArray2DataTable(JSONArray dataList) {
 		List<String> columnNameList = Lists.newArrayList();
