@@ -12,6 +12,7 @@ import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.table.JBTable;
 import com.vip.qa.tools.idea.plugin.jsonform.common.DataKeys;
 import com.vip.qa.tools.idea.plugin.jsonform.common.PluginConfig;
+import com.vip.qa.tools.idea.plugin.jsonform.service.FileService;
 import com.vip.qa.tools.idea.plugin.jsonform.service.TestDataService;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +42,7 @@ public class NavigatorPanel extends SimpleToolWindowPanel implements DataProvide
 
 		File file = dataFileChooser.getSelectedFile();
 		PluginConfig.curDataFile = file.getAbsolutePath();
-		Pair<String, JSONArray> dataContent = JsonDataFileUtils.readJsonFile(file);
+		Pair<String, JSONArray> dataContent = FileService.readJsonFile(file);
 
 		JPanel groupPanel = new JPanel();
 		groupPanel.setLayout(new BoxLayout(groupPanel, BoxLayout.Y_AXIS));

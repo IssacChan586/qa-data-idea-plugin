@@ -1,4 +1,4 @@
-package com.vip.qa.tools.idea.plugin.jsonform.window;
+package com.vip.qa.tools.idea.plugin.jsonform.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -11,7 +11,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.io.File;
 import java.io.IOException;
 
-public class JsonDataFileUtils {
+public class FileService {
 
 	public static Pair<String, JSONArray> readJsonFile(VirtualFile virtualFile) {
 		if (virtualFile == null) {

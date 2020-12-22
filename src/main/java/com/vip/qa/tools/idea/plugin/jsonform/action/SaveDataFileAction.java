@@ -8,7 +8,7 @@ import com.intellij.ui.table.JBTable;
 import com.vip.qa.tools.idea.plugin.jsonform.common.DataKeys;
 import com.vip.qa.tools.idea.plugin.jsonform.common.PluginConfig;
 import com.vip.qa.tools.idea.plugin.jsonform.service.TestDataService;
-import com.vip.qa.tools.idea.plugin.jsonform.window.JsonDataFileUtils;
+import com.vip.qa.tools.idea.plugin.jsonform.service.FileService;
 import com.vip.qa.tools.idea.plugin.jsonform.window.JsonFormWindowFactory;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,7 +25,7 @@ public class SaveDataFileAction extends AnAction {
 			return;
 		}
 		JSONArray dataArray = TestDataService.convertDataTable2DataArray(dataTable.getModel());
-		JsonDataFileUtils.writeJsonFile(dataArray, PluginConfig.curDataFile);
+		FileService.writeJsonFile(dataArray, PluginConfig.curDataFile);
 		Messages.showInfoMessage(String.format("Save [%s] successfully", PluginConfig.curDataFile), "Save!");
 	}
 
