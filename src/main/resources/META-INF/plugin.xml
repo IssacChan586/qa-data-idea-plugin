@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>com.vip.qa.tools.idea-plugin</id>
+    <name>VipQaTestDataConverter</name>
+    <vendor email="issac.chen@vipshop.com" url="http://www.vip.com">VIPSHOP</vendor>
+
+    <description>Edit your json data file in form tool windows.</description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <toolWindow id="JsonForm" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+                    factoryClass="com.vip.qa.tools.idea.plugin.jsonform.window.JsonFormWindowFactory"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="jsonform.LoadFileAction" class="com.vip.qa.tools.idea.plugin.jsonform.action.LoadDataFileAction"
+                text="loadFile" description="LoadFile" icon="JsonFormIcons.LOAD_FILE"/>
+        <action id="jsonform.SaveFileAction" class="com.vip.qa.tools.idea.plugin.jsonform.action.SaveDataFileAction"
+                text="loadFile" description="LoadFile" icon="JsonFormIcons.SAVE_FILE"/>
+
+        <group id="jsonform.NavigatorActionsToolbar">
+            <reference id="jsonform.LoadFileAction"/>
+            <reference id="jsonform.SaveFileAction"/>
+        </group>
+    </actions>
+</idea-plugin>
