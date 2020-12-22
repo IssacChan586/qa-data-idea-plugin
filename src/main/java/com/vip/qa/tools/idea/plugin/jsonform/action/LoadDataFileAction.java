@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.vip.qa.tools.idea.plugin.jsonform.common.DataKeys;
 import com.vip.qa.tools.idea.plugin.jsonform.common.PluginConfig;
-import com.vip.qa.tools.idea.plugin.jsonform.service.FileService;
+import com.vip.qa.tools.idea.plugin.jsonform.utils.DataFileUtil;
 import com.vip.qa.tools.idea.plugin.jsonform.window.JsonFormWindowFactory;
 import com.vip.qa.tools.idea.plugin.jsonform.window.NavigatorPanel;
 import org.apache.commons.lang3.tuple.Pair;
@@ -28,7 +28,7 @@ public class LoadDataFileAction extends AnAction {
 		File file = dataFileChooser.getSelectedFile();
 		PluginConfig.curDataFile = file.getAbsolutePath();
 
-		Pair<String, JSONArray> dataContent = FileService.readJsonFile(file);
+		Pair<String, JSONArray> dataContent = DataFileUtil.readJsonFile(file);
 		NavigatorPanel.refreshDataContent(
 				JsonFormWindowFactory.getDataContext(anActionEvent.getProject()).getData(DataKeys.JSON_FORM_DATA_TABLE),
 				JsonFormWindowFactory.getDataContext(anActionEvent.getProject())
