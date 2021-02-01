@@ -1,11 +1,13 @@
 package com.vip.qa.tools.idea.plugin.jsonform.window;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.ui.components.JBScrollPane;
@@ -18,6 +20,8 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 
 public class NavigatorPanel extends SimpleToolWindowPanel implements DataProvider {
@@ -51,6 +55,38 @@ public class NavigatorPanel extends SimpleToolWindowPanel implements DataProvide
 		dataTable = new JBTable();
 		contentScrollPanel = new JBScrollPane(dataTable, JBScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JBScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+		dataTable.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int selectedColumn = dataTable.getSelectedColumn();
+				int selectedRow = dataTable.getSelectedRow();
+				Messages.showMultilineInputDialog(project,
+						String.format("column: %s, row: %s", selectedColumn, selectedRow), "Content",
+						JSON.toJSONString(dataTable.getValueAt(selectedRow, selectedColumn), true),
+						Messages.getInformationIcon(), null);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 
 		groupPanel.add(dataStatusLabel);
 		groupPanel.add(contentScrollPanel);
